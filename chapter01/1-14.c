@@ -1,28 +1,27 @@
 #include <stdio.h>
 
-#define LEN 10
+#define LEN 26
 
 void main(){
     int c;
     int word = 0;
     int length = 0;
-    int ndigit[LEN];
+    int nchar[LEN];
 
     for (int i = 0; i < LEN; i++) {
-        ndigit[i] = 0;
+        nchar[i] = 0;
     }
 
     while ((c = getchar()) != EOF){
-        if (c == ' ' || c == '\t' || c == '\n') {
-            ndigit[length]++;
-            length = 0;
-        } else {
-            length++;
+        if (c >= 'A' && c <= 'Z') {
+            nchar[c-'A']++;
+        } else if (c >= 'a' && c <= 'z'){
+            nchar[c-'a']++;
         }
     }
     for (int i = 0; i < LEN; i++) {
-        printf("%d: ", i);
-        for (int j = 0; j < ndigit[i]; j++)
+        printf("%c: ", i+'a');
+        for (int j = 0; j < nchar[i]; j++)
             putchar('|');
         putchar('\n');
     }
