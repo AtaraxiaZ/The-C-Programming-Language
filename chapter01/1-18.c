@@ -11,8 +11,13 @@ int main()
     char line[MAXLINE];
 
     while ((len = mygetline(line, MAXLINE)) > 0){
-        printf("The length is %d\n", len);
+        if (line[0] == '\n') continue;
+        for (int i=len-1; i >= 0; i--){
+            if (line[i] == ' ' || line[i] == '\t')
+                line[i] = '\0';
+        }
         for (int i = 0; i < MAXLINE && line[i] != '\0'; i++){
+            if (line[i] != ' ' && line[i] != '\t') 
             printf("%c", line[i]);
         }
     }

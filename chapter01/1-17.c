@@ -11,6 +11,9 @@ int main()
     char line[MAXLINE];
 
     while ((len = mygetline(line, MAXLINE)) > 0){
+        if (len <= 80){
+            continue;
+        }
         printf("The length is %d\n", len);
         for (int i = 0; i < MAXLINE && line[i] != '\0'; i++){
             printf("%c", line[i]);
